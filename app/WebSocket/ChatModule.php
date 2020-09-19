@@ -50,7 +50,7 @@ class ChatModule
      */
     public function onMessage(Server $server, Frame $frame)
     {
-        $server->push($frame->fd, 'I have received message: ' . $frame->data);
+        $server->sendToAll("\r\n新消息\r\n".$frame->data);
     }
 
     /**
