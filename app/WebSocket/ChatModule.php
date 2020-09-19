@@ -46,11 +46,11 @@ class ChatModule
 
     /**
      * @OnMessage()
-     * @param Message $msg
+     * @param Frame $msg
      */
-    public function onMessage(Server $server,Message $msg)
+    public function onMessage(Server $server,Frame $msg)
     {
-        \server()->sendToAll("\r\n新消息\r\n".$msg->toString());
+        \server()->sendToAll("\r\n新消息\r\n".$msg);
     }
 
     /**
