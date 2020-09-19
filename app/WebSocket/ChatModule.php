@@ -9,6 +9,7 @@ use Swoft\WebSocket\Server\Annotation\Mapping\OnMessage;
 use Swoft\WebSocket\Server\Annotation\Mapping\OnHandshake;
 use Swoft\WebSocket\Server\Annotation\Mapping\OnOpen;
 use Swoft\WebSocket\Server\Annotation\Mapping\WsModule;
+use Swoft\WebSocket\Server\Message\Message;
 use Swoole\WebSocket\Frame;
 use Swoole\WebSocket\Server;
 
@@ -45,12 +46,11 @@ class ChatModule
 
     /**
      * @OnMessage()
-     * @param Server $server
-     * @param Frame $frame
+     * @param Message $msg
      */
-    public function onMessage(Server $server, Frame $frame)
+    public function onMessage(Message $msg)
     {
-        $server->sendToAll("\r\n新消息\r\n".$frame->data);
+        \server()->sendToAll("\r\n新消息\r\n".$msg->toString());
     }
 
     /**
