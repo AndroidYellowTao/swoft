@@ -48,7 +48,7 @@ class ChatModule
      * @OnMessage()
      * @param Message $msg
      */
-    public function onMessage(Message $msg)
+    public function onMessage(Server $server,Message $msg)
     {
         \server()->sendToAll("\r\n新消息\r\n".$msg->toString());
     }
